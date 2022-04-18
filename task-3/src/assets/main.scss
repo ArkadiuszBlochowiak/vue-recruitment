@@ -1,0 +1,357 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap");
+
+$white: #fff;
+$background-main: #f9f8f6;
+$text-main: #57606f;
+$icon-background: #ced6e0;
+$text-input: #747d8c;
+$background-search: #946B2D;
+$text-result: #A4B0BE;
+$text-title: #2F3542;
+$background-image: #740001;
+
+
+body {
+  background-color: $background-main;
+}
+
+main {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: $text-main;
+  max-width: 1316px;
+  margin: 0 auto;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.grid_element {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(95px,95px));
+  column-gap: 16px;
+}
+
+@mixin fonts ($f, $l, $w: normal){
+  font-size: $f;
+  line-height: $l;
+  font-weight: $w;
+}
+
+// ----------------------------------------------------------------               header             --------------------------------------------------------------------------
+
+.header {
+  margin: 120px 0 32px 0;
+  text-align: center;
+
+  .header__title {
+    grid-column: span 12;
+    margin-bottom: 24px;
+    @include fonts($f: 64px, $l: 72px, $w: bold);
+  }
+
+  .header__description {
+    grid-column: span 12;
+    @include fonts($f: 24px, $l: 27px);
+  }
+}
+
+// ----------------------------------------------------------------               filters             --------------------------------------------------------------------------
+
+.filters {
+  margin-bottom: 48px;
+  row-gap: 10px;
+
+  .filters__input,
+  .filters__select,
+  .filters__button {
+    height: 49px;
+  }
+
+  .filters__input,
+  .filters__select {
+    padding: 0 24px;
+    @include fonts($f: 15px, $l: 17px);
+    color: $text-input;
+    outline: none;
+    border: 1px solid $icon-background;
+    border-radius: 8px;
+  }
+
+  .filters__input {
+    grid-column: span 4;
+    height: 47px;
+
+    &::placeholder {
+      opacity: 1;
+      color:$text-input;
+    }
+  }
+
+  .filters__select {
+    grid-column: span 3;
+    background-color: $white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, $icon-background 51%),
+      linear-gradient(135deg, $icon-background 51%, transparent 50%);
+    background-position:
+      calc(100% - 32px) calc(1em + 5px),
+      calc(100% - 24px) calc(1em + 5px);
+    background-size:
+      8px 9px,
+      8px 9px;
+    background-repeat: no-repeat;
+  }
+
+  .filters__button {
+    width: 101px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+  }
+
+  .filters__button:first-of-type {
+    background-color: $background-search;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .filters__button:last-of-type {
+    margin-left: -6px;
+    background-color: $icon-background;
+
+    img {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+// ----------------------------------------------------------------               content             --------------------------------------------------------------------------
+
+.content {
+
+  .content__result {
+    margin-bottom: 16px;
+    @include fonts($f: 15px, $l: 17px);
+    color: $text-result;
+  }
+
+  .content__area {
+    row-gap: 20px;
+
+    .content__item {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: repeat(3, 95px);
+      column-gap: 16px;
+      background-color: $white;
+      @include fonts($f: 15px, $l: 17px);
+      border-radius: 16px;
+
+      .item__picture {
+        grid-column: span 3;
+        width: 128px;
+        height: 128px;
+        margin: 24px auto 16px auto;
+        border-radius: 50%;
+        border: 4px solid $background-image;
+      }
+
+      .item__name{
+        grid-column: span 3;
+        margin-bottom: 16px;
+        text-align: center;
+        @include fonts($f: 20px, $l: 23px, $w: bold);
+        color: $text-title;
+      }
+
+      .item__house {
+        grid-column: 2 / 4;
+        margin-bottom: 8px;
+
+        .item__box, p {
+          float: left;
+        }
+
+        .item__box {
+          width: 16px;
+          height: 16px;
+          margin: 0 8px -2px 0;
+          border-radius: 4px;
+          background-color: $background-image;
+        }
+      }
+
+      .item__birthday {
+        grid-column: 2 / 4;
+        margin-bottom: 25px;
+
+        img, p {
+          float: left;
+        }
+
+        img {
+          width: 16px;
+          height: 18px;
+          margin: 0 8px -3px 0;
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------               media             --------------------------------------------------------------------------
+
+@media only screen and (max-width: 1400px) {
+  main {
+    margin: 0 5vw;
+  }
+
+  .content {
+    max-width: 990px;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 1130px) {
+  main {
+    margin: 0 10vw;
+  }
+
+  .filters {
+    // justify-items: center;
+    max-width: 50%;
+    margin: 0 auto 48px;
+
+    .filters__input {
+      grid-column: 3 / span 4;
+      width: 40vw;
+    }
+
+    .filters__select:first-of-type {
+      grid-column: 3 / span 3;
+      width: 45vw;
+    }
+
+    .filters__select:last-of-type {
+      grid-column: 3 / span 3;
+      width: 45vw;
+    }
+
+    .filters__button:first-of-type {
+      grid-column: 3 / 4;
+    }
+    
+    .filters__button:last-of-type {
+      // grid-column: 4 / 5;
+      margin-left: 0px;
+    }
+  }
+
+  .content {
+    max-width: 650px;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  main {
+    margin: 0 7vw;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  main {
+    margin: 0 1vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .filters {
+
+    .filters__input {
+       width: 50vw;
+    }
+
+    .filters__select:first-of-type {
+      width: 60vw;
+    }
+
+    .filters__select:last-of-type {
+      width: 60vw;
+    }
+  }
+
+  .content {
+    max-width: 317px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    .header__title {
+      grid-column: span 6;
+    }
+
+    .header__description {
+      grid-column: span 6;
+    }
+  }
+
+  .filters {
+    max-width: 75%;
+
+    .filters__input {
+      width: 60vw;
+    }
+
+    .filters__select:first-of-type {
+      width: 70vw;
+    }
+
+    .filters__select:last-of-type {
+      width: 70vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  main {
+    margin: 0 2vw;
+  }
+
+  .header {
+
+    .header__title {
+      @include fonts($f: 55px, $l: 65px, $w: bold);
+    }
+
+    .header__description {
+      @include fonts($f: 20px, $l: 24px);
+    }
+  }
+
+  .filters {
+    max-width: 100%;
+
+    .filters__input {
+      width: 70vw;
+    }
+
+    .filters__select:first-of-type {
+      width: 85vw;
+    }
+
+    .filters__select:last-of-type {
+      width: 85vw;
+    }
+  }
+}
