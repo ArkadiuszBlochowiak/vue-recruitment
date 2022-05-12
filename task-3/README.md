@@ -1,5 +1,7 @@
 # task-3
 
+Connecting created static app with public API
+
 ## Project setup
 ```
 npm install
