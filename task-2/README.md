@@ -1,5 +1,7 @@
 # task-2
 
+Website implementation to Vue.js application
+
 ## Project setup
 ```
 npm install
